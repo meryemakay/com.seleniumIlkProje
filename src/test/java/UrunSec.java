@@ -14,11 +14,27 @@ public class UrunSec {
        4.list'e ekle.*/
 
         public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver","resourcess/drivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.navigate().to("https://www.amazon.com");
-        WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+           //1.webdriver ın turu ve path ı belırlendı
+            System.setProperty("webdriver.chrome.driver","resourcess/drivers/chromedriver.exe");
+
+            /*2.driver objesı olusturuldu
+            WebDriver : bir interface’dir, dolayisiyla obje uretemeyiz.
+             Browser’larin driver olusturabilmesi icin bir
+          kalip gibi calisir. Biz hangi browser’I
+            kullanmak istersek driver olustururken o browser’a ait constructor’I
+            kullaniriz.
+
+      **
+driver, insan olarak yaptigimiz veya gordugumuz tum
+islemleri otomasyon yapmamiza yardimci olur.
+             */
+            WebDriver driver = new ChromeDriver();
+
+            //3.driver objesı uzerınden WebDriver calssından methodlar kullnıldı
+             driver.manage().window().maximize();
+            driver.navigate().to("https://www.amazon.com");
+
+            WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("nutella");
         searchBox.submit();
         searchBox = driver.findElement(By.className("s-image"));
